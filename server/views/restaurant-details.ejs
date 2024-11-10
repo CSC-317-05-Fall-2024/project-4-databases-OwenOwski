@@ -22,7 +22,13 @@
                 <h2><%= restaurant.add %></h2>
                 <h2><%= restaurant.add1 %></h2>
                 <h2><%= restaurant.num %></h2>
-            
+                
+                <div> Reviews:
+                    <% for (let review of reviews) { %>
+                        <div> <%= review.name </div>
+                        <div> <%= review.star </div>
+                    <% } %>
+                </div>
             </div>
         </div>
 

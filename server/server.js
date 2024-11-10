@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 // todo: import cats data
-import { getRestaurant, getRestaurants, restaurants} from './data/restaurants.js';
+import { getRestaurant, getRestaurants, restaurants,getReviewsForRest} from './data/restaurants.js';
 import { backendRouter } from './routes/api.js';
 
 const app = express();
@@ -46,6 +46,14 @@ app.get('/restaurants/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const restaurant = getRestaurant(id);
     res.render('restaurant-details', {restaurant});
+});
+
+app.get('/restaurants/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+    const cat = await getRestaurant(id);
+    const toys = await getReviewsForRestaurant(id);
+    console.log(reviews);
+    res.render('restaurant_detail', {restaurant, reviews});
 });
 
 
